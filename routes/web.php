@@ -8,5 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/cars', [CarController::class, 'showCars']);
-
 Route::post('/cars/search-by-class', [CarController::class, 'searchByClass']);
+Route::post('/cars/search-by-name', [CarController::class, 'searchByName']);
