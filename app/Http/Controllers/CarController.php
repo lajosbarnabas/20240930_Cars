@@ -47,6 +47,7 @@ class CarController extends Controller
         }
 
         // dd($filteredCars);
+        $request -> flash();
 
         return view('cars', ['cars' => $filteredCars, 'classes' => $this->classes]);
     }
@@ -55,10 +56,12 @@ class CarController extends Controller
         $filteredCars = [];
 
         foreach($this->cars as $car){
-            if(strpos($car["title"], $request->name) !== false){
+            if(strpos(strtoupper($car["title"]), strtoupper($request->name)) !== false ){
                 $filteredCars[] = $car;
             }
         }
+
+        $request -> flash();
 
         return view('cars', ['cars' => $filteredCars, 'classes' => $this->classes]);
     }
